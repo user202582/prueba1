@@ -3,41 +3,560 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Mi Página</title>
+<title>Para Mi Amor ❤️</title>
 
 <style>
-body{
-    background:black;
-    color:white;
-    font-family:Arial;
-    text-align:center;
-    margin-top:100px;
+
+:root {
+  --rosa: #ff4d6d;
+  --rosa-claro: #ff8fa3;
+  --rosa-suave: #ffd6de;
+  --crema: #fff5f7;
+  --dorado: #f7c59f;
 }
 
-button{
-    padding:12px 20px;
-    border:none;
-    border-radius:10px;
-    font-size:18px;
-    background:#00ff88;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--crema);
+  overflow-x: hidden;
 }
+
+/* ========== SECTION 1: PORTADA ========== */
+
+#portada {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff4d6d 0%, #ff8fa3 50%, #ffb3c1 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+#portada::before {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 50%;
+  top: -100px; left: -100px;
+  animation: flotar 6s ease-in-out infinite;
+}
+
+#portada::after {
+  content: '';
+  position: absolute;
+  width: 300px; height: 300px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 50%;
+  bottom: -80px; right: -80px;
+  animation: flotar 8s ease-in-out infinite reverse;
+}
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.corazones-fondo {
+  position: absolute;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.corazon-bg {
+  position: absolute;
+  color: rgba(255,255,255,0.15);
+  font-size: 2rem;
+  animation: subir linear infinite;
+}
+
+@keyframes subir {
+  0% { transform: translateY(110vh) rotate(0deg); opacity: 0.3; }
+  100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+
+.card-portada {
+  background: rgba(255,255,255,0.95);
+  padding: 50px 40px;
+  border-radius: 30px;
+  text-align: center;
+  width: 360px;
+  box-shadow: 0 20px 60px rgba(255,77,109,0.4);
+  position: relative;
+  z-index: 1;
+  animation: aparecer 1s ease forwards;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card-portada h1 {
+  font-family: 'Playfair Display', serif;
+  color: var(--rosa);
+  font-size: 2rem;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.card-portada p {
+  color: #888;
+  font-size: 1rem;
+  margin-bottom: 24px;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+}
+
+.card-portada img {
+  border-radius: 20px;
+  width: 240px;
+  height: 260px;
+  object-fit: cover;
+  margin-bottom: 28px;
+  box-shadow: 0 8px 30px rgba(255,77,109,0.25);
+}
+
+.btn-principal {
+  background: linear-gradient(135deg, var(--rosa), #e63956);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-size: 15px;
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  box-shadow: 0 6px 20px rgba(255,77,109,0.5);
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn-principal:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255,77,109,0.6);
+}
+
+.pulso {
+  animation: pulso 1.8s ease-in-out infinite;
+}
+
+@keyframes pulso {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* ========== SECTION 2: NUESTRA HISTORIA ========== */
+
+#historia {
+  min-height: 100vh;
+  background: white;
+  padding: 80px 20px;
+  position: relative;
+}
+
+.foto-esquina {
+  position: absolute;
+  width: 90px; height: 90px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--rosa-suave);
+  box-shadow: 0 4px 15px rgba(255,77,109,0.25);
+  opacity: 0.85;
+}
+
+.foto-esquina.tl { top: 20px; left: 20px; }
+.foto-esquina.tr { top: 20px; right: 20px; }
+.foto-esquina.bl { bottom: 20px; left: 20px; }
+.foto-esquina.br { bottom: 20px; right: 20px; }
+
+.titulo-seccion {
+  font-family: 'Playfair Display', serif;
+  color: var(--rosa);
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.subtitulo-seccion {
+  text-align: center;
+  color: #bbb;
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 50px;
+}
+
+.linea-tiempo {
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 20px;
+}
+
+.linea-tiempo::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--rosa-suave), var(--rosa), var(--rosa-suave));
+  transform: translateX(-50%);
+}
+
+.evento {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 50px;
+  position: relative;
+  gap: 24px;
+}
+
+.evento:nth-child(odd) { flex-direction: row-reverse; }
+
+.evento-contenido {
+  flex: 1;
+  background: var(--crema);
+  border-radius: 16px;
+  padding: 20px 22px;
+  border-left: 4px solid var(--rosa);
+  box-shadow: 0 4px 20px rgba(255,77,109,0.08);
+  position: relative;
+}
+
+.evento:nth-child(odd) .evento-contenido {
+  border-left: none;
+  border-right: 4px solid var(--rosa);
+}
+
+.evento-dot {
+  width: 16px; height: 16px;
+  background: var(--rosa);
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 0 0 3px var(--rosa-suave);
+  flex-shrink: 0;
+  margin-top: 18px;
+  align-self: flex-start;
+  z-index: 1;
+}
+
+.evento-fecha {
+  font-size: 0.75rem;
+  color: var(--rosa);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.evento-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.evento-desc {
+  font-size: 0.9rem;
+  color: #777;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.evento-emoji {
+  font-size: 1.8rem;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* ========== SECTION 3: LO QUE AMO DE TI ========== */
+
+#amor {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #fff5f7 0%, #ffe0e8 100%);
+  padding: 80px 20px;
+}
+
+.grid-amor {
+  max-width: 700px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.tarjeta-amor {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 6px 25px rgba(255,77,109,0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta-amor:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 40px rgba(255,77,109,0.22);
+}
+
+.tarjeta-amor img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.tarjeta-amor-body {
+  padding: 20px;
+}
+
+.tarjeta-amor-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--rosa);
+  margin-bottom: 8px;
+}
+
+.tarjeta-amor-desc {
+  font-size: 0.88rem;
+  color: #888;
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+/* ========== SECTION 4: PARA SIEMPRE ========== */
+
+#siempre {
+  background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
+  padding: 80px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+#siempre::before {
+  content: '❤️';
+  font-size: 200px;
+  position: absolute;
+  opacity: 0.07;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1;
+}
+
+.carta {
+  max-width: 500px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.95);
+  border-radius: 25px;
+  padding: 50px 40px;
+  box-shadow: 0 20px 60px rgba(200,0,50,0.3);
+  position: relative;
+}
+
+.carta h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--rosa);
+  margin-bottom: 20px;
+}
+
+.carta p {
+  color: #777;
+  line-height: 1.8;
+  font-size: 1rem;
+  font-weight: 300;
+  margin-bottom: 14px;
+}
+
+.firma {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--rosa);
+  margin-top: 24px;
+}
+
+.corazon-latir {
+  font-size: 3rem;
+  display: inline-block;
+  animation: latir 1.2s ease-in-out infinite;
+  margin-top: 20px;
+}
+
+@keyframes latir {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.3); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.3); }
+  70% { transform: scale(1); }
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 500px) {
+  .grid-amor { grid-template-columns: 1fr; }
+  .card-portada { width: 92%; padding: 40px 24px; }
+  .carta { padding: 40px 24px; }
+  .linea-tiempo::before { left: 12px; }
+  .evento { flex-direction: column !important; gap: 12px; }
+  .evento-dot { display: none; }
+  .foto-esquina { width: 65px; height: 65px; }
+}
+
 </style>
 </head>
-
 <body>
 
-<h1>Hola 😎</h1>
+<!-- ======== SECCIÓN 1: PORTADA ======== -->
+<section id="portada">
+  <div class="corazones-fondo" id="corazonesBg"></div>
 
-<p>Mi primera página web</p>
+  <div class="card-portada">
+    <h1>Hola Amorcito míooo ❤️</h1>
+    <p>Hice esta página solo para ti, porque te mereces el mundo entero</p>
+    <img src="123.jpeg" alt="Mi amor">
+    <br>
+    <a href="#historia" class="btn-principal pulso">
+      ❤️ Presióname aquiiiiiiii jejejeje ❤️
+    </a>
+  </div>
+</section>
 
-<button onclick="saludar()">
-Presióname
-</button>
+<!-- ======== SECCIÓN 2: NUESTRA HISTORIA ======== -->
+<section id="historia">
+
+  <!-- foto 321 en las 4 esquinas -->
+  <img src="321.jpg" class="foto-esquina tl" alt="">
+  <img src="321.jpg" class="foto-esquina tr" alt="">
+  <img src="321.jpg" class="foto-esquina bl" alt="">
+  <img src="321.jpg" class="foto-esquina br" alt="">
+
+  <h2 class="titulo-seccion">Nuestra Historia 💕</h2>
+  <p class="subtitulo-seccion">Desde el 8 de Noviembre de 2025</p>
+
+  <div class="linea-tiempo">
+
+    <div class="evento">
+      <div class="evento-dot"></div>
+      <div class="evento-contenido">
+        <span class="evento-emoji">🌟</span>
+        <div class="evento-fecha">8 Noviembre 2025</div>
+        <div class="evento-titulo">El día que todo empezó</div>
+        <div class="evento-desc">Fue el inicio de algo tan bonito que ni yo mismo podía creerlo. Ese día cambiaste todo sin siquiera saber lo que hacías en mí.</div>
+      </div>
+    </div>
+
+    <div class="evento">
+      <div class="evento-dot"></div>
+      <div class="evento-contenido">
+        <span class="evento-emoji">💬</span>
+        <div class="evento-fecha">Noviembre 2025</div>
+        <div class="evento-titulo">Las primeras conversaciones</div>
+        <div class="evento-desc">Cada mensaje tuyo me hacía sonreír como un tonto. Empecé a esperarte sin darme cuenta. Ya eras parte de mi día.</div>
+      </div>
+    </div>
+
+    <div class="evento">
+      <div class="evento-dot"></div>
+      <div class="evento-contenido">
+        <span class="evento-emoji">🦋</span>
+        <div class="evento-fecha">El momento</div>
+        <div class="evento-titulo">Cuando me enamoré</div>
+        <div class="evento-desc">No fue un momento exacto, fue poco a poco… hasta que me di cuenta de que ya no podía imaginar mi día sin ti.</div>
+      </div>
+    </div>
+
+    <div class="evento">
+      <div class="evento-dot"></div>
+      <div class="evento-contenido">
+        <span class="evento-emoji">❤️</span>
+        <div class="evento-fecha">Hoy y siempre</div>
+        <div class="evento-titulo">Aquí y para quedarse</div>
+        <div class="evento-desc">Cada día contigo es mi favorito. Gracias por existir, gracias por estar, gracias por ser tú.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ======== SECCIÓN 3: LO QUE AMO DE TI ======== -->
+<section id="amor">
+  <h2 class="titulo-seccion">Lo que amo de ti ✨</h2>
+  <p class="subtitulo-seccion">Podría llenar páginas enteras</p>
+
+  <div class="grid-amor">
+
+    <div class="tarjeta-amor">
+      <img src="fde.jpeg" alt="Su sonrisa">
+      
+      <div class="tarjeta-amor-body">
+        <div class="tarjeta-amor-titulo">😊 Tus ojitos</div>
+        <div class="tarjeta-amor-desc">Cuando veo tus ojitos, literalmente todo a tu alrededor se ilumina. No exagero. Es la cosa más bonita y tierna que he visto en mi vida, y la quiero ver todos los días.</div>
+      </div>
+    </div>
+
+    <div class="tarjeta-amor">
+      <img src="fde2.jpeg" alt="Más de ella">
+      <div class="tarjeta-amor-body">
+        <div class="tarjeta-amor-titulo">🌸 Esa sonrisa tuya</div>
+        <div class="tarjeta-amor-desc">No me canso de verte así, feliz, auténtica, siendo tú. Tu sonrisa tiene algo mágico que me pone nervioso y tranquilo al mismo tiempo. Solo tú puedes hacer eso.</div>
+      </div>
+    </div>
+
+    <div class="tarjeta-amor">
+      <div class="tarjeta-amor-body" style="padding: 30px;">
+        <span style="font-size:2.5rem">💫</span>
+        <div class="tarjeta-amor-titulo" style="margin-top:10px">Tu forma de ser</div>
+        <div class="tarjeta-amor-desc">Eres especial de una manera que no sé explicar bien. Hay algo en ti que hace que todo sea mejor cuando estás cerca.</div>
+      </div>
+    </div>
+
+    <div class="tarjeta-amor">
+      <div class="tarjeta-amor-body" style="padding: 30px;">
+        <span style="font-size:2.5rem">🌙</span>
+        <div class="tarjeta-amor-titulo" style="margin-top:10px">Cada pequeño detalle</div>
+        <div class="tarjeta-amor-desc">Tu risa, tus ocurrencias, cómo hablas, cómo piensas… me encantas en todo. No te cambiaría nada, absolutamente nada.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ======== SECCIÓN 4: PARA SIEMPRE ======== -->
+<section id="siempre">
+  <div class="carta">
+    <h2>Para ti, siempre 💌</h2>
+    <p>Quiero que sepas que desde el <strong style="color:var(--rosa)">8 de Noviembre de 2025</strong> mi vida tiene un color diferente. Un color que tiene tu nombre.</p>
+    <p>No sé qué hice para merecer tenerte cerca, pero lo que sí sé es que voy a cuidarte, hacerte reír y estar contigo en todo lo que pueda.</p>
+    <p>Eres de las personas más lindas que me ha dado la vida. Por dentro y por fuera. Y me alegra tanto, tanto, que estés aquí.</p>
+    <p>Te quiero muchísimo, más de lo que esta página puede expresar.</p>
+    <div class="firma">Con todo mi amor ❤️</div>
+    <div class="corazon-latir">❤️</div>
+  </div>
+</section>
 
 <script>
-function saludar(){
-    alert("Hola desde GitHub Pages 🔥");
+// Corazones flotando en el fondo de la portada
+const contenedor = document.getElementById('corazonesBg');
+const emojis = ['❤️','💕','💗','💓','💖','🌸','✨'];
+
+for (let i = 0; i < 18; i++) {
+  const span = document.createElement('span');
+  span.classList.add('corazon-bg');
+  span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+  span.style.left = Math.random() * 100 + 'vw';
+  span.style.animationDuration = (6 + Math.random() * 8) + 's';
+  span.style.animationDelay = (Math.random() * 8) + 's';
+  span.style.fontSize = (1 + Math.random() * 2) + 'rem';
+  contenedor.appendChild(span);
 }
 </script>
 
