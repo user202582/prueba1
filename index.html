@@ -23,9 +23,116 @@ body {
 }
 
 /* =========================================
-   SECCIÓN 1: PORTADA
+   COUNTDOWN
 ========================================= */
+#countdown {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a0010 0%, #3d0020 60%, #1a0010 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  position: relative;
+  overflow: hidden;
+}
+.cd-stars { position: absolute; inset: 0; pointer-events: none; }
+.cd-star {
+  position: absolute;
+  background: rgba(255,200,220,0.55);
+  border-radius: 50%;
+  animation: cdPar ease-in-out infinite;
+}
+@keyframes cdPar {
+  0%,100% { opacity: 0.2; transform: scale(1); }
+  50%      { opacity: 1;   transform: scale(1.5); }
+}
+.cd-neko {
+  font-size: 3.5rem;
+  animation: cdNeko 2s ease-in-out infinite;
+  margin-bottom: 10px;
+  position: relative; z-index: 1;
+}
+@keyframes cdNeko {
+  0%,100% { transform: rotate(-8deg) scale(1); }
+  50%      { transform: rotate(8deg) scale(1.1); }
+}
+.cd-title {
+  font-family: 'Playfair Display', serif;
+  color: #ffb3c6;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-bottom: 6px;
+  position: relative; z-index: 1;
+}
+.cd-sub {
+  color: rgba(255,180,200,0.6);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  position: relative; z-index: 1;
+}
+.cd-grid {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 28px;
+  position: relative; z-index: 1;
+}
+.cd-box {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,150,170,0.3);
+  border-radius: 16px;
+  padding: 16px 20px;
+  text-align: center;
+  min-width: 78px;
+}
+.cd-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+.cd-lbl {
+  font-size: 0.68rem;
+  color: rgba(255,180,200,0.6);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+.cd-msg {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: rgba(255,180,200,0.75);
+  font-size: 0.95rem;
+  text-align: center;
+  max-width: 300px;
+  line-height: 1.65;
+  margin-bottom: 20px;
+  position: relative; z-index: 1;
+}
+.cd-locked {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,150,170,0.25);
+  border-radius: 50px;
+  padding: 10px 22px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative; z-index: 1;
+}
+.cd-locked span {
+  font-size: 0.78rem;
+  color: rgba(255,180,200,0.5);
+  letter-spacing: 0.05em;
+}
 
+/* =========================================
+   PORTADA
+========================================= */
 #portada {
   min-height: 100vh;
   background: linear-gradient(135deg, #ff4d6d 0%, #ff8fa3 50%, #ffb3c1 100%);
@@ -35,7 +142,6 @@ body {
   position: relative;
   overflow: hidden;
 }
-
 #portada::before {
   content: '';
   position: absolute;
@@ -56,9 +162,8 @@ body {
 }
 @keyframes flotar {
   0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+  50%      { transform: translateY(-20px); }
 }
-
 .corazones-fondo {
   position: absolute;
   width: 100%; height: 100%;
@@ -68,14 +173,12 @@ body {
 .corazon-bg {
   position: absolute;
   color: rgba(255,255,255,0.15);
-  font-size: 2rem;
   animation: subir linear infinite;
 }
 @keyframes subir {
   0%   { transform: translateY(110vh) rotate(0deg); opacity: 0.3; }
   100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
 }
-
 .card-portada {
   background: rgba(255,255,255,0.95);
   padding: 50px 40px;
@@ -98,12 +201,11 @@ body {
   margin-bottom: 12px;
   line-height: 1.2;
 }
-.card-portada p {
+.card-portada > p {
   color: #888;
   font-size: 1rem;
   margin-bottom: 24px;
   font-weight: 300;
-  letter-spacing: 0.03em;
 }
 .card-portada img {
   border-radius: 20px;
@@ -123,7 +225,6 @@ body {
   font-size: 15px;
   cursor: pointer;
   font-family: 'Lato', sans-serif;
-  font-weight: 400;
   letter-spacing: 0.05em;
   box-shadow: 0 6px 20px rgba(255,77,109,0.5);
   transition: all 0.3s ease;
@@ -141,9 +242,8 @@ body {
 }
 
 /* =========================================
-   SECCIÓN CONTRASEÑA
+   CONTRASEÑA
 ========================================= */
-
 #password-section {
   min-height: 100vh;
   background: linear-gradient(160deg, #1a0010 0%, #3d0020 50%, #1a0010 100%);
@@ -153,13 +253,7 @@ body {
   position: relative;
   overflow: hidden;
 }
-
-/* Estrellas de fondo */
-.estrellas {
-  position: absolute;
-  width: 100%; height: 100%;
-  pointer-events: none;
-}
+.estrellas { position: absolute; width: 100%; height: 100%; pointer-events: none; }
 .estrella {
   position: absolute;
   background: rgba(255,200,220,0.6);
@@ -170,7 +264,13 @@ body {
   0%,100% { opacity: 0.2; transform: scale(1); }
   50%      { opacity: 1;   transform: scale(1.4); }
 }
-
+.deco-corazon {
+  position: absolute;
+  font-size: 1.2rem;
+  opacity: 0.2;
+  animation: flotar 4s ease-in-out infinite;
+  pointer-events: none;
+}
 .password-box {
   background: rgba(255,255,255,0.05);
   backdrop-filter: blur(16px);
@@ -181,9 +281,8 @@ body {
   text-align: center;
   position: relative;
   z-index: 1;
-  box-shadow: 0 0 60px rgba(255,77,109,0.25), inset 0 0 40px rgba(255,77,109,0.05);
+  box-shadow: 0 0 60px rgba(255,77,109,0.2);
 }
-
 .lock-icon {
   font-size: 3.5rem;
   margin-bottom: 8px;
@@ -194,23 +293,19 @@ body {
   0%,100% { transform: scale(1) rotate(-3deg); }
   50%      { transform: scale(1.1) rotate(3deg); }
 }
-
 .password-box h2 {
   font-family: 'Playfair Display', serif;
   font-size: 1.7rem;
   color: #ffb3c6;
   margin-bottom: 6px;
 }
-.password-box p {
+.password-box > p {
   color: rgba(255,180,200,0.7);
   font-size: 0.88rem;
   font-weight: 300;
   margin-bottom: 28px;
-  letter-spacing: 0.04em;
   line-height: 1.5;
 }
-
-/* Inputs de fecha individuales */
 .fecha-inputs {
   display: flex;
   align-items: center;
@@ -237,18 +332,14 @@ body {
   background: rgba(255,77,109,0.15);
   box-shadow: 0 0 15px rgba(255,77,109,0.3);
 }
-.input-dd { width: 58px; padding: 12px 6px; }
-.input-mm { width: 58px; padding: 12px 6px; }
+.input-dd   { width: 58px; padding: 12px 6px; }
+.input-mm   { width: 58px; padding: 12px 6px; }
 .input-yyyy { width: 82px; padding: 12px 6px; }
-
 .separador-fecha {
   color: var(--rosa-claro);
   font-size: 1.5rem;
   font-weight: 300;
-  line-height: 1;
-  margin-bottom: 4px;
 }
-
 .hint-fecha {
   font-size: 0.75rem;
   color: rgba(255,180,200,0.5);
@@ -256,7 +347,6 @@ body {
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
-
 .btn-ingresar {
   background: linear-gradient(135deg, var(--rosa), #c0003a);
   color: white;
@@ -275,13 +365,11 @@ body {
   transform: translateY(-3px);
   box-shadow: 0 10px 35px rgba(255,77,109,0.7);
 }
-
 .error-msg {
   margin-top: 16px;
   color: #ff8fa3;
   font-size: 0.88rem;
   min-height: 22px;
-  animation: sacudir 0.4s ease;
 }
 @keyframes sacudir {
   0%,100% { transform: translateX(0); }
@@ -291,19 +379,9 @@ body {
   80%      { transform: translateX(6px); }
 }
 
-/* corazones deco alrededor del box */
-.deco-corazon {
-  position: absolute;
-  font-size: 1.2rem;
-  opacity: 0.2;
-  animation: flotar 4s ease-in-out infinite;
-  pointer-events: none;
-}
-
 /* =========================================
-   SECCIÓN 2: NUESTRA HISTORIA
+   HISTORIA
 ========================================= */
-
 #historia {
   min-height: 100vh;
   background: white;
@@ -323,7 +401,6 @@ body {
 .foto-esquina.tr { top: 20px; right: 20px; }
 .foto-esquina.bl { bottom: 20px; left: 20px; }
 .foto-esquina.br { bottom: 20px; right: 20px; }
-
 .titulo-seccion {
   font-family: 'Playfair Display', serif;
   color: var(--rosa);
@@ -339,7 +416,6 @@ body {
   text-transform: uppercase;
   margin-bottom: 50px;
 }
-
 .linea-tiempo {
   max-width: 600px;
   margin: 0 auto;
@@ -349,8 +425,7 @@ body {
 .linea-tiempo::before {
   content: '';
   position: absolute;
-  left: 50%;
-  top: 0; bottom: 0;
+  left: 50%; top: 0; bottom: 0;
   width: 2px;
   background: linear-gradient(to bottom, var(--rosa-suave), var(--rosa), var(--rosa-suave));
   transform: translateX(-50%);
@@ -405,16 +480,11 @@ body {
   line-height: 1.6;
   font-weight: 300;
 }
-.evento-emoji {
-  font-size: 1.8rem;
-  margin-bottom: 6px;
-  display: block;
-}
+.evento-emoji { font-size: 1.8rem; margin-bottom: 6px; display: block; }
 
 /* =========================================
-   SECCIÓN 3: LO QUE AMO DE TI
+   AMOR
 ========================================= */
-
 #amor {
   min-height: 100vh;
   background: linear-gradient(160deg, #fff5f7 0%, #ffe0e8 100%);
@@ -459,9 +529,8 @@ body {
 }
 
 /* =========================================
-   SECCIÓN CUMPLEAÑOS
+   CUMPLEAÑOS
 ========================================= */
-
 #cumple {
   background: linear-gradient(135deg, #fff0f3 0%, #ffe4ec 100%);
   padding: 80px 20px;
@@ -469,7 +538,6 @@ body {
   position: relative;
   overflow: hidden;
 }
-
 .globos {
   position: absolute;
   top: 0; left: 0;
@@ -480,7 +548,6 @@ body {
 .globo {
   position: absolute;
   bottom: -60px;
-  font-size: 2.5rem;
   animation: subirGlobo linear infinite;
   opacity: 0.5;
 }
@@ -489,7 +556,6 @@ body {
   50%  { transform: translateY(-50vh) rotate(5deg); opacity: 0.5; }
   100% { transform: translateY(-110vh) rotate(-3deg); opacity: 0; }
 }
-
 .cumple-card {
   max-width: 540px;
   margin: 0 auto;
@@ -524,7 +590,6 @@ body {
   font-size: 3.5rem;
   font-weight: 700;
   color: var(--rosa-suave);
-  letter-spacing: 0.04em;
   margin-bottom: 24px;
   line-height: 1;
 }
@@ -535,15 +600,8 @@ body {
   font-weight: 300;
   margin-bottom: 16px;
 }
-.cumple-card p strong {
-  color: var(--rosa);
-  font-weight: 400;
-}
-.cumple-emojis {
-  font-size: 2rem;
-  margin: 20px 0;
-  letter-spacing: 0.1em;
-}
+.cumple-card p strong { color: var(--rosa); font-weight: 400; }
+.cumple-emojis { font-size: 2rem; margin: 20px 0; letter-spacing: 0.1em; }
 .cumple-deseo {
   background: linear-gradient(135deg, #fff0f3, #ffe4ec);
   border-radius: 16px;
@@ -561,9 +619,8 @@ body {
 }
 
 /* =========================================
-   SECCIÓN 4: PARA SIEMPRE
+   PARA SIEMPRE
 ========================================= */
-
 #siempre {
   background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
   padding: 80px 20px;
@@ -623,9 +680,8 @@ body {
 }
 
 /* =========================================
-   OVERLAY DE CELEBRACIÓN
+   CONFETI OVERLAY
 ========================================= */
-
 #celebracion-overlay {
   display: none;
   position: fixed;
@@ -637,7 +693,6 @@ body {
 .confeti {
   position: absolute;
   top: -20px;
-  width: 10px; height: 14px;
   border-radius: 2px;
   animation: caerConfeti linear forwards;
 }
@@ -649,7 +704,6 @@ body {
 /* =========================================
    RESPONSIVE
 ========================================= */
-
 @media (max-width: 500px) {
   .grid-amor { grid-template-columns: 1fr; }
   .card-portada { width: 92%; padding: 40px 24px; }
@@ -661,6 +715,8 @@ body {
   .evento-dot { display: none; }
   .foto-esquina { width: 65px; height: 65px; }
   .password-box { width: 92%; padding: 40px 24px; }
+  .cd-box { min-width: 62px; padding: 12px 14px; }
+  .cd-num { font-size: 2rem; }
 }
 
 </style>
@@ -668,325 +724,357 @@ body {
 <body>
 
 <!-- ======================================
-     SECCIÓN 1: PORTADA
+     COUNTDOWN — primera pantalla siempre visible
 ======================================= -->
-<section id="portada">
-  <div class="corazones-fondo" id="corazonesBg"></div>
-  <div class="card-portada">
-    <h1>Hola Amorcito míooo ❤️</h1>
-    <p>Hice esta página solo para ti, porque te mereces el mundo entero</p>
-    <img src="123.jpeg" alt="Mi amor">
-    <br>
-    <button class="btn-principal" onclick="irAPassword()">
-      ❤️ Presióname aquiiiiiiii jejejeje ❤️
-    </button>
+<section id="countdown">
+  <div class="cd-stars" id="cdStars"></div>
+  <div class="cd-neko">🐱</div>
+  <div class="cd-title">Algo muy especial se acerca…</div>
+  <div class="cd-sub">El gran día llega en</div>
+  <div class="cd-grid">
+    <div class="cd-box"><div class="cd-num" id="cd-d">--</div><div class="cd-lbl">días</div></div>
+    <div class="cd-box"><div class="cd-num" id="cd-h">--</div><div class="cd-lbl">horas</div></div>
+    <div class="cd-box"><div class="cd-num" id="cd-m">--</div><div class="cd-lbl">min</div></div>
+    <div class="cd-box"><div class="cd-num" id="cd-s">--</div><div class="cd-lbl">seg</div></div>
+  </div>
+  <div class="cd-msg" id="cd-msg">Algo muy especial te espera… 🐾💕</div>
+  <div class="cd-locked" id="cd-locked">
+    <span>🔒 El contenido se desbloquea el 12 de junio</span>
   </div>
 </section>
 
 <!-- ======================================
-     SECCIÓN CONTRASEÑA
+     TODO LO DEMÁS — oculto hasta el 12/06/2026
 ======================================= -->
-<section id="password-section">
-  <div class="estrellas" id="estrellasBg"></div>
+<div id="contenido-principal" style="display:none">
 
-  <!-- corazones decorativos alrededor -->
-  <span class="deco-corazon" style="top:12%;left:8%;animation-delay:0s">💗</span>
-  <span class="deco-corazon" style="top:18%;right:10%;animation-delay:1s">💕</span>
-  <span class="deco-corazon" style="bottom:20%;left:12%;animation-delay:2s">❤️</span>
-  <span class="deco-corazon" style="bottom:14%;right:8%;animation-delay:0.5s">💖</span>
-  <span class="deco-corazon" style="top:45%;left:4%;animation-delay:1.5s">🌸</span>
-  <span class="deco-corazon" style="top:50%;right:5%;animation-delay:2.5s">✨</span>
-
-  <div class="password-box">
-    <span class="lock-icon">🔐</span>
-    <h2>Zona Especial</h2>
-    <p>Solo alguien muy especial puede entrar aquí…<br>¿Recuerdas la fecha en que todo empezó? 🥺💕</p>
-
-    <div class="fecha-inputs">
-      <input type="number" class="input-dd"   id="inp-dd"   placeholder="DD"   min="1" max="31" maxlength="2">
-      <span class="separador-fecha">/</span>
-      <input type="number" class="input-mm"   id="inp-mm"   placeholder="MM"   min="1" max="12" maxlength="2">
-      <span class="separador-fecha">/</span>
-      <input type="number" class="input-yyyy" id="inp-yyyy" placeholder="AAAA" min="2000" max="2099">
+  <!-- PORTADA -->
+  <section id="portada">
+    <div class="corazones-fondo" id="corazonesBg"></div>
+    <div class="card-portada">
+      <h1>Hola Amorcito míooo ❤️</h1>
+      <p>Hice esta página solo para ti, porque te mereces el mundo entero</p>
+      <img src="123.jpeg" alt="Mi amor">
+      <br>
+      <button class="btn-principal" onclick="irAPassword()">
+        ❤️ Presióname aquiiiiiiii jejejeje ❤️
+      </button>
     </div>
+  </section>
 
-    <div class="hint-fecha">Ingresa la fecha especial 💌</div>
-
-    <button class="btn-ingresar" onclick="verificarPassword()">
-      Entrar ❤️
-    </button>
-
-    <div class="error-msg" id="error-msg"></div>
-  </div>
-</section>
-
-<!-- ======================================
-     CONTENIDO BLOQUEADO (se revela con contraseña)
-======================================= -->
-<div id="contenido-bloqueado" style="display:none">
-
-<!-- ======================================
-     SECCIÓN 2: NUESTRA HISTORIA
-======================================= -->
-<section id="historia">
-  <img src="321.jpg" class="foto-esquina tl" alt="">
-  <img src="321.jpg" class="foto-esquina tr" alt="">
-  <img src="321.jpg" class="foto-esquina bl" alt="">
-  <img src="321.jpg" class="foto-esquina br" alt="">
-
-  <h2 class="titulo-seccion">Nuestra Historia 💕</h2>
-  <p class="subtitulo-seccion">Desde el 8 de Noviembre de 2025</p>
-
-  <div class="linea-tiempo">
-
-    <div class="evento">
-      <div class="evento-dot"></div>
-      <div class="evento-contenido">
-        <span class="evento-emoji">🌟</span>
-        <div class="evento-fecha">8 Noviembre 2025</div>
-        <div class="evento-titulo">El día que todo empezó</div>
-        <div class="evento-desc">Fue el inicio de algo tan bonito que ni yo mismo podía creerlo. Ese día cambiaste todo sin siquiera saber lo que hacías en mí.</div>
+  <!-- CONTRASEÑA -->
+  <section id="password-section">
+    <div class="estrellas" id="estrellasBg"></div>
+    <span class="deco-corazon" style="top:12%;left:8%;animation-delay:0s">💗</span>
+    <span class="deco-corazon" style="top:18%;right:10%;animation-delay:1s">💕</span>
+    <span class="deco-corazon" style="bottom:20%;left:12%;animation-delay:2s">❤️</span>
+    <span class="deco-corazon" style="bottom:14%;right:8%;animation-delay:0.5s">💖</span>
+    <span class="deco-corazon" style="top:45%;left:4%;animation-delay:1.5s">🌸</span>
+    <span class="deco-corazon" style="top:50%;right:5%;animation-delay:2.5s">✨</span>
+    <div class="password-box">
+      <span class="lock-icon">🔐</span>
+      <h2>Zona Especial</h2>
+      <p>Solo alguien muy especial puede entrar aquí…<br>¿Recuerdas la fecha en que todo empezó? 🥺💕</p>
+      <div class="fecha-inputs">
+        <input type="number" class="input-dd"   id="inp-dd"   placeholder="DD"   min="1" max="31">
+        <span class="separador-fecha">/</span>
+        <input type="number" class="input-mm"   id="inp-mm"   placeholder="MM"   min="1" max="12">
+        <span class="separador-fecha">/</span>
+        <input type="number" class="input-yyyy" id="inp-yyyy" placeholder="AAAA" min="2000" max="2099">
       </div>
+      <div class="hint-fecha">Ingresa la fecha especial 💌</div>
+      <button class="btn-ingresar" onclick="verificarPassword()">Entrar ❤️</button>
+      <div class="error-msg" id="error-msg"></div>
     </div>
+  </section>
 
-    <div class="evento">
-      <div class="evento-dot"></div>
-      <div class="evento-contenido">
-        <span class="evento-emoji">💬</span>
-        <div class="evento-fecha">Noviembre 2025</div>
-        <div class="evento-titulo">Las primeras conversaciones</div>
-        <div class="evento-desc">Cada mensaje tuyo me hacía sonreír como un tonto. Empecé a esperarte sin darme cuenta. Ya eras parte de mi día.</div>
+  <!-- CONTENIDO CON CONTRASEÑA -->
+  <div id="contenido-bloqueado" style="display:none">
+
+    <!-- HISTORIA -->
+    <section id="historia">
+      <img src="321.jpg" class="foto-esquina tl" alt="">
+      <img src="321.jpg" class="foto-esquina tr" alt="">
+      <img src="321.jpg" class="foto-esquina bl" alt="">
+      <img src="321.jpg" class="foto-esquina br" alt="">
+      <h2 class="titulo-seccion">Nuestra Historia 💕</h2>
+      <p class="subtitulo-seccion">Desde el 8 de Noviembre de 2025</p>
+      <div class="linea-tiempo">
+        <div class="evento">
+          <div class="evento-dot"></div>
+          <div class="evento-contenido">
+            <span class="evento-emoji">🌟</span>
+            <div class="evento-fecha">8 Noviembre 2025</div>
+            <div class="evento-titulo">El día que todo empezó</div>
+            <div class="evento-desc">Fue el inicio de algo tan bonito que ni yo mismo podía creerlo. Ese día cambiaste todo sin siquiera saber lo que hacías en mí.</div>
+          </div>
+        </div>
+        <div class="evento">
+          <div class="evento-dot"></div>
+          <div class="evento-contenido">
+            <span class="evento-emoji">💬</span>
+            <div class="evento-fecha">Noviembre 2025</div>
+            <div class="evento-titulo">Las primeras conversaciones</div>
+            <div class="evento-desc">Cada mensaje tuyo me hacía sonreír como un tonto. Empecé a esperarte sin darme cuenta. Ya eras parte de mi día.</div>
+          </div>
+        </div>
+        <div class="evento">
+          <div class="evento-dot"></div>
+          <div class="evento-contenido">
+            <span class="evento-emoji">🦋</span>
+            <div class="evento-fecha">El momento</div>
+            <div class="evento-titulo">Cuando me enamoré</div>
+            <div class="evento-desc">No fue un momento exacto, fue poco a poco… hasta que me di cuenta de que ya no podía imaginar mi día sin ti.</div>
+          </div>
+        </div>
+        <div class="evento">
+          <div class="evento-dot"></div>
+          <div class="evento-contenido">
+            <span class="evento-emoji">❤️</span>
+            <div class="evento-fecha">Hoy y siempre</div>
+            <div class="evento-titulo">Aquí y para quedarse</div>
+            <div class="evento-desc">Cada día contigo es mi favorito. Gracias por existir, gracias por estar, gracias por ser tú.</div>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="evento">
-      <div class="evento-dot"></div>
-      <div class="evento-contenido">
-        <span class="evento-emoji">🦋</span>
-        <div class="evento-fecha">El momento</div>
-        <div class="evento-titulo">Cuando me enamoré</div>
-        <div class="evento-desc">No fue un momento exacto, fue poco a poco… hasta que me di cuenta de que ya no podía imaginar mi día sin ti.</div>
+    <!-- LO QUE AMO DE TI -->
+    <section id="amor">
+      <h2 class="titulo-seccion">Lo que amo de ti ✨</h2>
+      <p class="subtitulo-seccion">Podría llenar páginas enteras</p>
+      <div class="grid-amor">
+        <div class="tarjeta-amor">
+          <img src="fde.jpeg" alt="Sus ojitos">
+          <div class="tarjeta-amor-body">
+            <div class="tarjeta-amor-titulo">😊 Tus ojitos</div>
+            <div class="tarjeta-amor-desc">Cuando veo tus ojitos, literalmente todo a tu alrededor se ilumina. No exagero. Es la cosa más bonita y tierna que he visto en mi vida, y la quiero ver todos los días.</div>
+          </div>
+        </div>
+        <div class="tarjeta-amor">
+          <img src="fde2.jpeg" alt="Su sonrisa">
+          <div class="tarjeta-amor-body">
+            <div class="tarjeta-amor-titulo">🌸 Esa sonrisa tuya</div>
+            <div class="tarjeta-amor-desc">No me canso de verte así, feliz, auténtica, siendo tú. Tu sonrisa tiene algo mágico que me pone nervioso y tranquilo al mismo tiempo. Solo tú puedes hacer eso.</div>
+          </div>
+        </div>
+        <div class="tarjeta-amor">
+          <div class="tarjeta-amor-body" style="padding:30px">
+            <span style="font-size:2.5rem">💫</span>
+            <div class="tarjeta-amor-titulo" style="margin-top:10px">Tu forma de ser</div>
+            <div class="tarjeta-amor-desc">Eres especial de una manera que no sé explicar bien. Hay algo en ti que hace que todo sea mejor cuando estás cerca.</div>
+          </div>
+        </div>
+        <div class="tarjeta-amor">
+          <div class="tarjeta-amor-body" style="padding:30px">
+            <span style="font-size:2.5rem">🌙</span>
+            <div class="tarjeta-amor-titulo" style="margin-top:10px">Cada pequeño detalle</div>
+            <div class="tarjeta-amor-desc">Tu risa, tus ocurrencias, cómo hablas, cómo piensas… me encantas en todo. No te cambiaría nada, absolutamente nada.</div>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="evento">
-      <div class="evento-dot"></div>
-      <div class="evento-contenido">
-        <span class="evento-emoji">❤️</span>
-        <div class="evento-fecha">Hoy y siempre</div>
-        <div class="evento-titulo">Aquí y para quedarse</div>
-        <div class="evento-desc">Cada día contigo es mi favorito. Gracias por existir, gracias por estar, gracias por ser tú.</div>
+    <!-- CUMPLEAÑOS -->
+    <section id="cumple">
+      <div class="globos" id="globosBg"></div>
+      <div class="cumple-card">
+        <div class="cumple-badge">🎂 12 de Junio · Día Especial 🎂</div>
+        <h2>¡Feliz Cumpleaños,<br>mi amor!</h2>
+        <div class="cumple-fecha-grande">12.06</div>
+        <div class="cumple-emojis">🎉🎈💕🎊✨🎂💖</div>
+        <p>Hoy el mundo cumple <strong>un año de tenerte</strong>… y yo un año de ser la persona más afortunada por estar cerca de ti.</p>
+        <div class="cumple-deseo">
+          <p>"Que este año que empieza para ti esté lleno de todo lo que te mereces: risas, abrazos, momentos que te hagan sentir especial… porque tú LO ERES."</p>
+        </div>
+        <p>No sé cómo explicarte lo que siento cada vez que te veo. Pero sí sé que hoy, tu cumpleaños, quiero que sepas que <strong>eres la persona más bonita</strong> que ha llegado a mi vida.</p>
+        <p>Gracias por existir. Gracias por sonreír así. Gracias por ser tan tú. No te pido nada más que seguir siendo exactamente quien eres, porque esa persona ya me tiene completamente enamorado.</p>
+        <p style="margin-top:10px">Te deseo un día tan especial como tú, lleno de amor, sorpresas y muchísima felicidad. <strong>¡Feliz cumple, amorcito!</strong> 🎂❤️</p>
+        <div class="cumple-emojis" style="margin-top:24px">🥳💝🎁💫🎈</div>
       </div>
-    </div>
+    </section>
 
-  </div>
-</section>
-
-<!-- ======================================
-     SECCIÓN 3: LO QUE AMO DE TI
-======================================= -->
-<section id="amor">
-  <h2 class="titulo-seccion">Lo que amo de ti ✨</h2>
-  <p class="subtitulo-seccion">Podría llenar páginas enteras</p>
-
-  <div class="grid-amor">
-
-    <div class="tarjeta-amor">
-      <img src="fde.jpeg" alt="Sus ojitos">
-      <div class="tarjeta-amor-body">
-        <div class="tarjeta-amor-titulo">😊 Tus ojitos</div>
-        <div class="tarjeta-amor-desc">Cuando veo tus ojitos, literalmente todo a tu alrededor se ilumina. No exagero. Es la cosa más bonita y tierna que he visto en mi vida, y la quiero ver todos los días.</div>
+    <!-- PARA SIEMPRE -->
+    <section id="siempre">
+      <div class="carta">
+        <h2>Para ti, siempre 💌</h2>
+        <p>Quiero que sepas que desde el <strong style="color:var(--rosa)">8 de Noviembre de 2025</strong> mi vida tiene un color diferente. Un color que tiene tu nombre.</p>
+        <p>No sé qué hice para merecer tenerte cerca, pero lo que sí sé es que voy a cuidarte, hacerte reír y estar contigo en todo lo que pueda.</p>
+        <p>Eres de las personas más lindas que me ha dado la vida. Por dentro y por fuera. Y me alegra tanto, tanto, que estés aquí.</p>
+        <p>Te quiero muchísimo, más de lo que esta página puede expresar.</p>
+        <div class="firma">Con todo mi amor ❤️</div>
+        <div class="corazon-latir">❤️</div>
       </div>
-    </div>
+    </section>
 
-    <div class="tarjeta-amor">
-      <img src="fde2.jpeg" alt="Su sonrisa">
-      <div class="tarjeta-amor-body">
-        <div class="tarjeta-amor-titulo">🌸 Esa sonrisa tuya</div>
-        <div class="tarjeta-amor-desc">No me canso de verte así, feliz, auténtica, siendo tú. Tu sonrisa tiene algo mágico que me pone nervioso y tranquilo al mismo tiempo. Solo tú puedes hacer eso.</div>
-      </div>
-    </div>
+  </div><!-- fin contenido-bloqueado -->
+</div><!-- fin contenido-principal -->
 
-    <div class="tarjeta-amor">
-      <div class="tarjeta-amor-body" style="padding: 30px;">
-        <span style="font-size:2.5rem">💫</span>
-        <div class="tarjeta-amor-titulo" style="margin-top:10px">Tu forma de ser</div>
-        <div class="tarjeta-amor-desc">Eres especial de una manera que no sé explicar bien. Hay algo en ti que hace que todo sea mejor cuando estás cerca.</div>
-      </div>
-    </div>
-
-    <div class="tarjeta-amor">
-      <div class="tarjeta-amor-body" style="padding: 30px;">
-        <span style="font-size:2.5rem">🌙</span>
-        <div class="tarjeta-amor-titulo" style="margin-top:10px">Cada pequeño detalle</div>
-        <div class="tarjeta-amor-desc">Tu risa, tus ocurrencias, cómo hablas, cómo piensas… me encantas en todo. No te cambiaría nada, absolutamente nada.</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ======================================
-     SECCIÓN CUMPLEAÑOS
-======================================= -->
-<section id="cumple">
-  <div class="globos" id="globosBg"></div>
-
-  <div class="cumple-card">
-    <div class="cumple-badge">🎂 12 de Junio · Día Especial 🎂</div>
-    <h2>¡Feliz Cumpleaños,<br>mi amor!</h2>
-    <div class="cumple-fecha-grande">12.06</div>
-
-    <div class="cumple-emojis">🎉🎈💕🎊✨🎂💖</div>
-
-    <p>Hoy el mundo cumple <strong>un año de tenerte</strong>… y yo un año de ser la persona más afortunada por estar cerca de ti.</p>
-
-    <div class="cumple-deseo">
-      <p>"Que este año que empieza para ti esté lleno de todo lo que te mereces: risas, abrazos, momentos que te hagan sentir especial… porque tú LO ERES."</p>
-    </div>
-
-    <p>No sé cómo explicarte lo que siento cada vez que te veo. Pero sí sé que hoy, tu cumpleaños, quiero que sepas que <strong>eres la persona más bonita</strong> que ha llegado a mi vida.</p>
-
-    <p>Gracias por existir. Gracias por sonreír así. Gracias por ser tan tú. No te pido nada más que seguir siendo exactamente quien eres, porque esa persona ya me tiene completamente enamorado.</p>
-
-    <p style="margin-top:10px">Te deseo un día tan especial como tú, lleno de amor, sorpresas y muchísima felicidad. <strong>¡Feliz cumple, amorcito!</strong> 🎂❤️</p>
-
-    <div class="cumple-emojis" style="margin-top:24px">🥳💝🎁💫🎈</div>
-  </div>
-</section>
-
-<!-- ======================================
-     SECCIÓN 4: PARA SIEMPRE
-======================================= -->
-<section id="siempre">
-  <div class="carta">
-    <h2>Para ti, siempre 💌</h2>
-    <p>Quiero que sepas que desde el <strong style="color:var(--rosa)">8 de Noviembre de 2025</strong> mi vida tiene un color diferente. Un color que tiene tu nombre.</p>
-    <p>No sé qué hice para merecer tenerte cerca, pero lo que sí sé es que voy a cuidarte, hacerte reír y estar contigo en todo lo que pueda.</p>
-    <p>Eres de las personas más lindas que me ha dado la vida. Por dentro y por fuera. Y me alegra tanto, tanto, que estés aquí.</p>
-    <p>Te quiero muchísimo, más de lo que esta página puede expresar.</p>
-    <div class="firma">Con todo mi amor ❤️</div>
-    <div class="corazon-latir">❤️</div>
-  </div>
-</section>
-
-</div><!-- fin contenido-bloqueado -->
-
-<!-- Overlay de confeti -->
 <div id="celebracion-overlay"></div>
 
 <script>
+(function () {
 
-/* ---- Corazones portada ---- */
-const contenedor = document.getElementById('corazonesBg');
-const emojis = ['❤️','💕','💗','💓','💖','🌸','✨'];
-for (let i = 0; i < 18; i++) {
-  const s = document.createElement('span');
-  s.classList.add('corazon-bg');
-  s.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-  s.style.left = Math.random() * 100 + 'vw';
-  s.style.animationDuration = (6 + Math.random() * 8) + 's';
-  s.style.animationDelay = (Math.random() * 8) + 's';
-  s.style.fontSize = (1 + Math.random() * 2) + 'rem';
-  contenedor.appendChild(s);
-}
+  /* --- FECHA OBJETIVO: 12 de junio de 2026 --- */
+  var FECHA_CUMPLE = new Date('2026-06-12T00:00:00');
+  var CONTRASENA   = '08/11/2025';
 
-/* ---- Estrellas sección password ---- */
-const estBg = document.getElementById('estrellasBg');
-for (let i = 0; i < 60; i++) {
-  const e = document.createElement('div');
-  e.classList.add('estrella');
-  const sz = Math.random() * 3 + 1;
-  e.style.width = sz + 'px';
-  e.style.height = sz + 'px';
-  e.style.top  = Math.random() * 100 + '%';
-  e.style.left = Math.random() * 100 + '%';
-  e.style.animationDuration = (2 + Math.random() * 4) + 's';
-  e.style.animationDelay    = (Math.random() * 4) + 's';
-  estBg.appendChild(e);
-}
-
-/* ---- Globos cumpleaños ---- */
-const globosBg = document.getElementById('globosBg');
-const globoEmojis = ['🎈','🎉','💖','🎊','🌸','✨','🎂','💕'];
-for (let i = 0; i < 14; i++) {
-  const g = document.createElement('span');
-  g.classList.add('globo');
-  g.textContent = globoEmojis[Math.floor(Math.random() * globoEmojis.length)];
-  g.style.left = Math.random() * 100 + 'vw';
-  g.style.animationDuration = (8 + Math.random() * 10) + 's';
-  g.style.animationDelay    = (Math.random() * 10) + 's';
-  g.style.fontSize = (1.5 + Math.random() * 2) + 'rem';
-  globosBg.appendChild(g);
-}
-
-/* ---- Ir a sección password ---- */
-function irAPassword() {
-  document.getElementById('password-section').scrollIntoView({ behavior: 'smooth' });
-}
-
-/* ---- Verificar contraseña ---- */
-function verificarPassword() {
-  const dd   = document.getElementById('inp-dd').value.trim().padStart(2,'0');
-  const mm   = document.getElementById('inp-mm').value.trim().padStart(2,'0');
-  const yyyy = document.getElementById('inp-yyyy').value.trim();
-  const ingresada = dd + '/' + mm + '/' + yyyy;
-  const correcta  = '08/11/2025';
-  const errEl = document.getElementById('error-msg');
-
-  if (ingresada === correcta) {
-    errEl.textContent = '';
-    lanzarConfeti();
-    // Revelar el contenido bloqueado
-    document.getElementById('contenido-bloqueado').style.display = 'block';
-    setTimeout(() => {
-      document.getElementById('historia').scrollIntoView({ behavior: 'smooth' });
-    }, 1200);
-  } else {
-    errEl.textContent = '💔 Esa no es la fecha… piénsalo bien, amorcito 😘';
-    errEl.style.animation = 'none';
-    void errEl.offsetWidth;
-    errEl.style.animation = 'sacudir 0.4s ease';
+  /* --- Countdown stars --- */
+  var cdStars = document.getElementById('cdStars');
+  for (var i = 0; i < 55; i++) {
+    var e = document.createElement('div');
+    e.className = 'cd-star';
+    var sz = Math.random() * 3 + 1;
+    e.style.cssText = 'width:'+sz+'px;height:'+sz+'px;top:'+(Math.random()*100)+'%;left:'+(Math.random()*100)+'%;animation-duration:'+(2+Math.random()*4)+'s;animation-delay:'+(Math.random()*4)+'s';
+    cdStars.appendChild(e);
   }
-}
 
-/* ---- Confeti de celebración ---- */
-function lanzarConfeti() {
-  const overlay = document.getElementById('celebracion-overlay');
-  overlay.style.display = 'block';
-  overlay.innerHTML = '';
-  const colores = ['#ff4d6d','#ff8fa3','#ffb3c1','#ffd6de','#fff','#f7c59f','#ffec99'];
-  for (let i = 0; i < 80; i++) {
-    const c = document.createElement('div');
-    c.classList.add('confeti');
-    c.style.left = Math.random() * 100 + 'vw';
-    c.style.top  = '-20px';
-    c.style.background = colores[Math.floor(Math.random() * colores.length)];
-    c.style.width  = (6 + Math.random() * 10) + 'px';
-    c.style.height = (8 + Math.random() * 14) + 'px';
-    c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
-    c.style.animationDuration = (1.5 + Math.random() * 2) + 's';
-    c.style.animationDelay    = (Math.random() * 0.8) + 's';
-    overlay.appendChild(c);
+  /* --- Tick del countdown --- */
+  function tick() {
+    var ahora = new Date();
+    var diff  = FECHA_CUMPLE - ahora;
+
+    if (diff <= 0) {
+      /* ¡Llegó el día! Mostrar portada y ocultar lock */
+      document.getElementById('cd-d').textContent = '0';
+      document.getElementById('cd-h').textContent = '00';
+      document.getElementById('cd-m').textContent = '00';
+      document.getElementById('cd-s').textContent = '00';
+      document.getElementById('cd-msg').textContent = '🎂 ¡HOY ES EL DÍA! ¡Feliz cumpleaños, amorcito! 💕';
+      document.getElementById('cd-locked').style.display = 'none';
+      document.getElementById('contenido-principal').style.display = 'block';
+      iniciarAnimaciones();
+      clearInterval(timer);
+      return;
+    }
+
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000)  / 60000);
+    var s = Math.floor((diff % 60000)    / 1000);
+
+    document.getElementById('cd-d').textContent = d;
+    document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
   }
-  setTimeout(() => { overlay.style.display = 'none'; }, 4000);
-}
 
-/* ---- Auto avanzar inputs de fecha ---- */
-document.getElementById('inp-dd').addEventListener('input', function() {
-  if (this.value.length >= 2) document.getElementById('inp-mm').focus();
-});
-document.getElementById('inp-mm').addEventListener('input', function() {
-  if (this.value.length >= 2) document.getElementById('inp-yyyy').focus();
-});
+  tick();
+  var timer = setInterval(tick, 1000);
 
-/* ---- Enter en cualquier input dispara verificación ---- */
-['inp-dd','inp-mm','inp-yyyy'].forEach(id => {
-  document.getElementById(id).addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') verificarPassword();
+  /* --- Iniciar animaciones de secciones internas --- */
+  function iniciarAnimaciones() {
+    /* Corazones portada */
+    var contenedor = document.getElementById('corazonesBg');
+    var emojis = ['❤️','💕','💗','💓','💖','🌸','✨'];
+    for (var i = 0; i < 18; i++) {
+      var s = document.createElement('span');
+      s.className = 'corazon-bg';
+      s.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      s.style.left = (Math.random() * 100) + 'vw';
+      s.style.animationDuration = (6 + Math.random() * 8) + 's';
+      s.style.animationDelay    = (Math.random() * 8) + 's';
+      s.style.fontSize = (1 + Math.random() * 2) + 'rem';
+      contenedor.appendChild(s);
+    }
+
+    /* Estrellas sección password */
+    var estBg = document.getElementById('estrellasBg');
+    for (var i = 0; i < 60; i++) {
+      var e = document.createElement('div');
+      e.className = 'estrella';
+      var sz = Math.random() * 3 + 1;
+      e.style.width  = sz + 'px';
+      e.style.height = sz + 'px';
+      e.style.top    = (Math.random() * 100) + '%';
+      e.style.left   = (Math.random() * 100) + '%';
+      e.style.animationDuration = (2 + Math.random() * 4) + 's';
+      e.style.animationDelay    = (Math.random() * 4) + 's';
+      estBg.appendChild(e);
+    }
+  }
+
+  /* --- Ir a contraseña --- */
+  window.irAPassword = function () {
+    document.getElementById('password-section').scrollIntoView({ behavior: 'smooth' });
+  };
+
+  /* --- Verificar contraseña --- */
+  window.verificarPassword = function () {
+    var dd   = (document.getElementById('inp-dd').value.trim() || '').padStart(2,'0');
+    var mm   = (document.getElementById('inp-mm').value.trim() || '').padStart(2,'0');
+    var yyyy = document.getElementById('inp-yyyy').value.trim();
+    var ingresada = dd + '/' + mm + '/' + yyyy;
+    var errEl = document.getElementById('error-msg');
+
+    if (ingresada === CONTRASENA) {
+      errEl.textContent = '';
+      lanzarConfeti();
+      document.getElementById('contenido-bloqueado').style.display = 'block';
+
+      /* Globos cumpleaños */
+      var globosBg = document.getElementById('globosBg');
+      var globoEmojis = ['🎈','🎉','💖','🎊','🌸','✨','🎂','💕'];
+      for (var i = 0; i < 14; i++) {
+        var g = document.createElement('span');
+        g.className = 'globo';
+        g.textContent = globoEmojis[Math.floor(Math.random() * globoEmojis.length)];
+        g.style.left = (Math.random() * 100) + 'vw';
+        g.style.animationDuration = (8 + Math.random() * 10) + 's';
+        g.style.animationDelay    = (Math.random() * 10) + 's';
+        g.style.fontSize = (1.5 + Math.random() * 2) + 'rem';
+        globosBg.appendChild(g);
+      }
+
+      setTimeout(function () {
+        document.getElementById('historia').scrollIntoView({ behavior: 'smooth' });
+      }, 1200);
+    } else {
+      errEl.textContent = '💔 Esa no es la fecha… piénsalo bien, amorcito 😘';
+      errEl.style.animation = 'none';
+      void errEl.offsetWidth;
+      errEl.style.animation = 'sacudir 0.4s ease';
+    }
+  };
+
+  /* --- Confeti --- */
+  function lanzarConfeti() {
+    var overlay = document.getElementById('celebracion-overlay');
+    overlay.style.display = 'block';
+    overlay.innerHTML = '';
+    var colores = ['#ff4d6d','#ff8fa3','#ffb3c1','#ffd6de','#fff','#f7c59f','#ffec99'];
+    for (var i = 0; i < 80; i++) {
+      var c = document.createElement('div');
+      c.className = 'confeti';
+      c.style.left = (Math.random() * 100) + 'vw';
+      c.style.top  = '-20px';
+      c.style.background = colores[Math.floor(Math.random() * colores.length)];
+      c.style.width  = (6 + Math.random() * 10) + 'px';
+      c.style.height = (8 + Math.random() * 14) + 'px';
+      c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      c.style.animationDuration = (1.5 + Math.random() * 2) + 's';
+      c.style.animationDelay    = (Math.random() * 0.8) + 's';
+      overlay.appendChild(c);
+    }
+    setTimeout(function () { overlay.style.display = 'none'; }, 4000);
+  }
+
+  /* --- Auto avanzar inputs --- */
+  document.getElementById('inp-dd').addEventListener('input', function () {
+    if (this.value.length >= 2) document.getElementById('inp-mm').focus();
   });
-});
+  document.getElementById('inp-mm').addEventListener('input', function () {
+    if (this.value.length >= 2) document.getElementById('inp-yyyy').focus();
+  });
 
+  /* --- Enter dispara verificación --- */
+  ['inp-dd','inp-mm','inp-yyyy'].forEach(function (id) {
+    document.getElementById(id).addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') window.verificarPassword();
+    });
+  });
+
+})();
 </script>
 </body>
 </html>
