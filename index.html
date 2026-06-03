@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Para Mi Amor ❤️</title>
-
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 <style>
 
 :root {
@@ -12,20 +12,19 @@
   --rosa-claro: #ff8fa3;
   --rosa-suave: #ffd6de;
   --crema: #fff5f7;
-  --dorado: #f7c59f;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
-
 body {
   font-family: 'Lato', sans-serif;
   background: var(--crema);
   overflow-x: hidden;
 }
 
-/* ========== SECTION 1: PORTADA ========== */
+/* =========================================
+   SECCIÓN 1: PORTADA
+========================================= */
 
 #portada {
   min-height: 100vh;
@@ -46,7 +45,6 @@ body {
   top: -100px; left: -100px;
   animation: flotar 6s ease-in-out infinite;
 }
-
 #portada::after {
   content: '';
   position: absolute;
@@ -56,9 +54,8 @@ body {
   bottom: -80px; right: -80px;
   animation: flotar 8s ease-in-out infinite reverse;
 }
-
 @keyframes flotar {
-  0%, 100% { transform: translateY(0); }
+  0%,100% { transform: translateY(0); }
   50% { transform: translateY(-20px); }
 }
 
@@ -68,16 +65,14 @@ body {
   pointer-events: none;
   overflow: hidden;
 }
-
 .corazon-bg {
   position: absolute;
   color: rgba(255,255,255,0.15);
   font-size: 2rem;
   animation: subir linear infinite;
 }
-
 @keyframes subir {
-  0% { transform: translateY(110vh) rotate(0deg); opacity: 0.3; }
+  0%   { transform: translateY(110vh) rotate(0deg); opacity: 0.3; }
   100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
 }
 
@@ -92,12 +87,10 @@ body {
   z-index: 1;
   animation: aparecer 1s ease forwards;
 }
-
 @keyframes aparecer {
   from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
 .card-portada h1 {
   font-family: 'Playfair Display', serif;
   color: var(--rosa);
@@ -105,7 +98,6 @@ body {
   margin-bottom: 12px;
   line-height: 1.2;
 }
-
 .card-portada p {
   color: #888;
   font-size: 1rem;
@@ -113,16 +105,15 @@ body {
   font-weight: 300;
   letter-spacing: 0.03em;
 }
-
 .card-portada img {
   border-radius: 20px;
   width: 240px;
   height: 260px;
   object-fit: cover;
+  object-position: top;
   margin-bottom: 28px;
   box-shadow: 0 8px 30px rgba(255,77,109,0.25);
 }
-
 .btn-principal {
   background: linear-gradient(135deg, var(--rosa), #e63956);
   color: white;
@@ -138,23 +129,180 @@ body {
   transition: all 0.3s ease;
   display: inline-block;
   text-decoration: none;
+  animation: pulso 1.8s ease-in-out infinite;
 }
-
 .btn-principal:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 30px rgba(255,77,109,0.6);
 }
-
-.pulso {
-  animation: pulso 1.8s ease-in-out infinite;
-}
-
 @keyframes pulso {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  0%,100% { transform: scale(1); }
+  50%      { transform: scale(1.05); }
 }
 
-/* ========== SECTION 2: NUESTRA HISTORIA ========== */
+/* =========================================
+   SECCIÓN CONTRASEÑA
+========================================= */
+
+#password-section {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #1a0010 0%, #3d0020 50%, #1a0010 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Estrellas de fondo */
+.estrellas {
+  position: absolute;
+  width: 100%; height: 100%;
+  pointer-events: none;
+}
+.estrella {
+  position: absolute;
+  background: rgba(255,200,220,0.6);
+  border-radius: 50%;
+  animation: parpadear ease-in-out infinite;
+}
+@keyframes parpadear {
+  0%,100% { opacity: 0.2; transform: scale(1); }
+  50%      { opacity: 1;   transform: scale(1.4); }
+}
+
+.password-box {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,150,170,0.3);
+  border-radius: 32px;
+  padding: 50px 40px;
+  width: 360px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 60px rgba(255,77,109,0.25), inset 0 0 40px rgba(255,77,109,0.05);
+}
+
+.lock-icon {
+  font-size: 3.5rem;
+  margin-bottom: 8px;
+  display: block;
+  animation: lockPulso 2s ease-in-out infinite;
+}
+@keyframes lockPulso {
+  0%,100% { transform: scale(1) rotate(-3deg); }
+  50%      { transform: scale(1.1) rotate(3deg); }
+}
+
+.password-box h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem;
+  color: #ffb3c6;
+  margin-bottom: 6px;
+}
+.password-box p {
+  color: rgba(255,180,200,0.7);
+  font-size: 0.88rem;
+  font-weight: 300;
+  margin-bottom: 28px;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+
+/* Inputs de fecha individuales */
+.fecha-inputs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.fecha-inputs input {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,150,170,0.4);
+  border-radius: 12px;
+  color: white;
+  font-size: 1.4rem;
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  outline: none;
+  transition: all 0.3s;
+  -moz-appearance: textfield;
+}
+.fecha-inputs input::-webkit-outer-spin-button,
+.fecha-inputs input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.fecha-inputs input:focus {
+  border-color: var(--rosa);
+  background: rgba(255,77,109,0.15);
+  box-shadow: 0 0 15px rgba(255,77,109,0.3);
+}
+.input-dd { width: 58px; padding: 12px 6px; }
+.input-mm { width: 58px; padding: 12px 6px; }
+.input-yyyy { width: 82px; padding: 12px 6px; }
+
+.separador-fecha {
+  color: var(--rosa-claro);
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.hint-fecha {
+  font-size: 0.75rem;
+  color: rgba(255,180,200,0.5);
+  margin-bottom: 22px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.btn-ingresar {
+  background: linear-gradient(135deg, var(--rosa), #c0003a);
+  color: white;
+  border: none;
+  padding: 14px 36px;
+  border-radius: 50px;
+  font-size: 15px;
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 0.08em;
+  box-shadow: 0 6px 25px rgba(255,77,109,0.5);
+  transition: all 0.3s;
+  text-transform: uppercase;
+}
+.btn-ingresar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 35px rgba(255,77,109,0.7);
+}
+
+.error-msg {
+  margin-top: 16px;
+  color: #ff8fa3;
+  font-size: 0.88rem;
+  min-height: 22px;
+  animation: sacudir 0.4s ease;
+}
+@keyframes sacudir {
+  0%,100% { transform: translateX(0); }
+  20%      { transform: translateX(-8px); }
+  40%      { transform: translateX(8px); }
+  60%      { transform: translateX(-6px); }
+  80%      { transform: translateX(6px); }
+}
+
+/* corazones deco alrededor del box */
+.deco-corazon {
+  position: absolute;
+  font-size: 1.2rem;
+  opacity: 0.2;
+  animation: flotar 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* =========================================
+   SECCIÓN 2: NUESTRA HISTORIA
+========================================= */
 
 #historia {
   min-height: 100vh;
@@ -162,7 +310,6 @@ body {
   padding: 80px 20px;
   position: relative;
 }
-
 .foto-esquina {
   position: absolute;
   width: 90px; height: 90px;
@@ -172,7 +319,6 @@ body {
   box-shadow: 0 4px 15px rgba(255,77,109,0.25);
   opacity: 0.85;
 }
-
 .foto-esquina.tl { top: 20px; left: 20px; }
 .foto-esquina.tr { top: 20px; right: 20px; }
 .foto-esquina.bl { bottom: 20px; left: 20px; }
@@ -185,7 +331,6 @@ body {
   text-align: center;
   margin-bottom: 12px;
 }
-
 .subtitulo-seccion {
   text-align: center;
   color: #bbb;
@@ -201,7 +346,6 @@ body {
   position: relative;
   padding: 0 20px;
 }
-
 .linea-tiempo::before {
   content: '';
   position: absolute;
@@ -211,7 +355,6 @@ body {
   background: linear-gradient(to bottom, var(--rosa-suave), var(--rosa), var(--rosa-suave));
   transform: translateX(-50%);
 }
-
 .evento {
   display: flex;
   align-items: flex-start;
@@ -219,9 +362,7 @@ body {
   position: relative;
   gap: 24px;
 }
-
 .evento:nth-child(odd) { flex-direction: row-reverse; }
-
 .evento-contenido {
   flex: 1;
   background: var(--crema);
@@ -229,14 +370,11 @@ body {
   padding: 20px 22px;
   border-left: 4px solid var(--rosa);
   box-shadow: 0 4px 20px rgba(255,77,109,0.08);
-  position: relative;
 }
-
 .evento:nth-child(odd) .evento-contenido {
   border-left: none;
   border-right: 4px solid var(--rosa);
 }
-
 .evento-dot {
   width: 16px; height: 16px;
   background: var(--rosa);
@@ -245,10 +383,8 @@ body {
   box-shadow: 0 0 0 3px var(--rosa-suave);
   flex-shrink: 0;
   margin-top: 18px;
-  align-self: flex-start;
   z-index: 1;
 }
-
 .evento-fecha {
   font-size: 0.75rem;
   color: var(--rosa);
@@ -257,35 +393,33 @@ body {
   font-weight: 700;
   margin-bottom: 6px;
 }
-
 .evento-titulo {
   font-family: 'Playfair Display', serif;
   font-size: 1.2rem;
   color: #333;
   margin-bottom: 6px;
 }
-
 .evento-desc {
   font-size: 0.9rem;
   color: #777;
   line-height: 1.6;
   font-weight: 300;
 }
-
 .evento-emoji {
   font-size: 1.8rem;
   margin-bottom: 6px;
   display: block;
 }
 
-/* ========== SECTION 3: LO QUE AMO DE TI ========== */
+/* =========================================
+   SECCIÓN 3: LO QUE AMO DE TI
+========================================= */
 
 #amor {
   min-height: 100vh;
   background: linear-gradient(160deg, #fff5f7 0%, #ffe0e8 100%);
   padding: 80px 20px;
 }
-
 .grid-amor {
   max-width: 700px;
   margin: 0 auto;
@@ -293,7 +427,6 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 22px;
 }
-
 .tarjeta-amor {
   background: white;
   border-radius: 20px;
@@ -301,30 +434,23 @@ body {
   box-shadow: 0 6px 25px rgba(255,77,109,0.12);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .tarjeta-amor:hover {
   transform: translateY(-6px);
   box-shadow: 0 14px 40px rgba(255,77,109,0.22);
 }
-
 .tarjeta-amor img {
   width: 100%;
-  height: 220px;
+  height: 280px;
   object-fit: cover;
-  object-position: top;
+  object-position: 50% 20%;
 }
-
-.tarjeta-amor-body {
-  padding: 20px;
-}
-
+.tarjeta-amor-body { padding: 20px; }
 .tarjeta-amor-titulo {
   font-family: 'Playfair Display', serif;
   font-size: 1.2rem;
   color: var(--rosa);
   margin-bottom: 8px;
 }
-
 .tarjeta-amor-desc {
   font-size: 0.88rem;
   color: #888;
@@ -332,7 +458,111 @@ body {
   font-weight: 300;
 }
 
-/* ========== SECTION 4: PARA SIEMPRE ========== */
+/* =========================================
+   SECCIÓN CUMPLEAÑOS
+========================================= */
+
+#cumple {
+  background: linear-gradient(135deg, #fff0f3 0%, #ffe4ec 100%);
+  padding: 80px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.globos {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+.globo {
+  position: absolute;
+  bottom: -60px;
+  font-size: 2.5rem;
+  animation: subirGlobo linear infinite;
+  opacity: 0.5;
+}
+@keyframes subirGlobo {
+  0%   { transform: translateY(0) rotate(-5deg); opacity: 0.5; }
+  50%  { transform: translateY(-50vh) rotate(5deg); opacity: 0.5; }
+  100% { transform: translateY(-110vh) rotate(-3deg); opacity: 0; }
+}
+
+.cumple-card {
+  max-width: 540px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 30px;
+  padding: 55px 44px;
+  box-shadow: 0 16px 50px rgba(255,77,109,0.15);
+  position: relative;
+  z-index: 1;
+}
+.cumple-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--rosa), #ff8fa3);
+  color: white;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 6px 18px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+.cumple-card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: var(--rosa);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+.cumple-fecha-grande {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--rosa-suave);
+  letter-spacing: 0.04em;
+  margin-bottom: 24px;
+  line-height: 1;
+}
+.cumple-card p {
+  color: #888;
+  line-height: 1.85;
+  font-size: 1rem;
+  font-weight: 300;
+  margin-bottom: 16px;
+}
+.cumple-card p strong {
+  color: var(--rosa);
+  font-weight: 400;
+}
+.cumple-emojis {
+  font-size: 2rem;
+  margin: 20px 0;
+  letter-spacing: 0.1em;
+}
+.cumple-deseo {
+  background: linear-gradient(135deg, #fff0f3, #ffe4ec);
+  border-radius: 16px;
+  padding: 22px 24px;
+  margin: 24px 0;
+  border-left: 4px solid var(--rosa-suave);
+}
+.cumple-deseo p {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: #b05570;
+  margin: 0;
+  line-height: 1.7;
+}
+
+/* =========================================
+   SECCIÓN 4: PARA SIEMPRE
+========================================= */
 
 #siempre {
   background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
@@ -341,7 +571,6 @@ body {
   position: relative;
   overflow: hidden;
 }
-
 #siempre::before {
   content: '❤️';
   font-size: 200px;
@@ -349,9 +578,7 @@ body {
   opacity: 0.07;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  line-height: 1;
 }
-
 .carta {
   max-width: 500px;
   margin: 0 auto;
@@ -361,14 +588,12 @@ body {
   box-shadow: 0 20px 60px rgba(200,0,50,0.3);
   position: relative;
 }
-
 .carta h2 {
   font-family: 'Playfair Display', serif;
   font-size: 2rem;
   color: var(--rosa);
   margin-bottom: 20px;
 }
-
 .carta p {
   color: #777;
   line-height: 1.8;
@@ -376,7 +601,6 @@ body {
   font-weight: 300;
   margin-bottom: 14px;
 }
-
 .firma {
   font-family: 'Playfair Display', serif;
   font-style: italic;
@@ -384,56 +608,127 @@ body {
   color: var(--rosa);
   margin-top: 24px;
 }
-
 .corazon-latir {
   font-size: 3rem;
   display: inline-block;
   animation: latir 1.2s ease-in-out infinite;
   margin-top: 20px;
 }
-
 @keyframes latir {
-  0%, 100% { transform: scale(1); }
-  14% { transform: scale(1.3); }
-  28% { transform: scale(1); }
-  42% { transform: scale(1.3); }
-  70% { transform: scale(1); }
+  0%,100% { transform: scale(1); }
+  14%      { transform: scale(1.3); }
+  28%      { transform: scale(1); }
+  42%      { transform: scale(1.3); }
+  70%      { transform: scale(1); }
 }
 
-/* ========== RESPONSIVE ========== */
+/* =========================================
+   OVERLAY DE CELEBRACIÓN
+========================================= */
+
+#celebracion-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  overflow: hidden;
+}
+.confeti {
+  position: absolute;
+  top: -20px;
+  width: 10px; height: 14px;
+  border-radius: 2px;
+  animation: caerConfeti linear forwards;
+}
+@keyframes caerConfeti {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0.3; }
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
 @media (max-width: 500px) {
   .grid-amor { grid-template-columns: 1fr; }
   .card-portada { width: 92%; padding: 40px 24px; }
   .carta { padding: 40px 24px; }
+  .cumple-card { padding: 40px 24px; }
+  .cumple-fecha-grande { font-size: 2.5rem; }
   .linea-tiempo::before { left: 12px; }
   .evento { flex-direction: column !important; gap: 12px; }
   .evento-dot { display: none; }
   .foto-esquina { width: 65px; height: 65px; }
+  .password-box { width: 92%; padding: 40px 24px; }
 }
 
 </style>
 </head>
 <body>
 
-<!-- ======== SECCIÓN 1: PORTADA ======== -->
+<!-- ======================================
+     SECCIÓN 1: PORTADA
+======================================= -->
 <section id="portada">
   <div class="corazones-fondo" id="corazonesBg"></div>
-
   <div class="card-portada">
     <h1>Hola Amorcito míooo ❤️</h1>
     <p>Hice esta página solo para ti, porque te mereces el mundo entero</p>
     <img src="123.jpeg" alt="Mi amor">
     <br>
-    <a href="#historia" class="btn-principal pulso">
+    <button class="btn-principal" onclick="irAPassword()">
       ❤️ Presióname aquiiiiiiii jejejeje ❤️
-    </a>
+    </button>
   </div>
 </section>
 
-<!-- ======== SECCIÓN 2: NUESTRA HISTORIA ======== -->
-<section id="historia">
+<!-- ======================================
+     SECCIÓN CONTRASEÑA
+======================================= -->
+<section id="password-section">
+  <div class="estrellas" id="estrellasBg"></div>
 
-  <!-- foto 321 en las 4 esquinas -->
+  <!-- corazones decorativos alrededor -->
+  <span class="deco-corazon" style="top:12%;left:8%;animation-delay:0s">💗</span>
+  <span class="deco-corazon" style="top:18%;right:10%;animation-delay:1s">💕</span>
+  <span class="deco-corazon" style="bottom:20%;left:12%;animation-delay:2s">❤️</span>
+  <span class="deco-corazon" style="bottom:14%;right:8%;animation-delay:0.5s">💖</span>
+  <span class="deco-corazon" style="top:45%;left:4%;animation-delay:1.5s">🌸</span>
+  <span class="deco-corazon" style="top:50%;right:5%;animation-delay:2.5s">✨</span>
+
+  <div class="password-box">
+    <span class="lock-icon">🔐</span>
+    <h2>Zona Especial</h2>
+    <p>Solo alguien muy especial puede entrar aquí…<br>¿Recuerdas la fecha en que todo empezó? 🥺💕</p>
+
+    <div class="fecha-inputs">
+      <input type="number" class="input-dd"   id="inp-dd"   placeholder="DD"   min="1" max="31" maxlength="2">
+      <span class="separador-fecha">/</span>
+      <input type="number" class="input-mm"   id="inp-mm"   placeholder="MM"   min="1" max="12" maxlength="2">
+      <span class="separador-fecha">/</span>
+      <input type="number" class="input-yyyy" id="inp-yyyy" placeholder="AAAA" min="2000" max="2099">
+    </div>
+
+    <div class="hint-fecha">Ingresa la fecha especial 💌</div>
+
+    <button class="btn-ingresar" onclick="verificarPassword()">
+      Entrar ❤️
+    </button>
+
+    <div class="error-msg" id="error-msg"></div>
+  </div>
+</section>
+
+<!-- ======================================
+     CONTENIDO BLOQUEADO (se revela con contraseña)
+======================================= -->
+<div id="contenido-bloqueado" style="display:none">
+
+<!-- ======================================
+     SECCIÓN 2: NUESTRA HISTORIA
+======================================= -->
+<section id="historia">
   <img src="321.jpg" class="foto-esquina tl" alt="">
   <img src="321.jpg" class="foto-esquina tr" alt="">
   <img src="321.jpg" class="foto-esquina bl" alt="">
@@ -487,7 +782,9 @@ body {
   </div>
 </section>
 
-<!-- ======== SECCIÓN 3: LO QUE AMO DE TI ======== -->
+<!-- ======================================
+     SECCIÓN 3: LO QUE AMO DE TI
+======================================= -->
 <section id="amor">
   <h2 class="titulo-seccion">Lo que amo de ti ✨</h2>
   <p class="subtitulo-seccion">Podría llenar páginas enteras</p>
@@ -495,8 +792,7 @@ body {
   <div class="grid-amor">
 
     <div class="tarjeta-amor">
-      <img src="fde.jpeg" alt="Su sonrisa">
-      
+      <img src="fde.jpeg" alt="Sus ojitos">
       <div class="tarjeta-amor-body">
         <div class="tarjeta-amor-titulo">😊 Tus ojitos</div>
         <div class="tarjeta-amor-desc">Cuando veo tus ojitos, literalmente todo a tu alrededor se ilumina. No exagero. Es la cosa más bonita y tierna que he visto en mi vida, y la quiero ver todos los días.</div>
@@ -504,7 +800,7 @@ body {
     </div>
 
     <div class="tarjeta-amor">
-      <img src="fde2.jpeg" alt="Más de ella">
+      <img src="fde2.jpeg" alt="Su sonrisa">
       <div class="tarjeta-amor-body">
         <div class="tarjeta-amor-titulo">🌸 Esa sonrisa tuya</div>
         <div class="tarjeta-amor-desc">No me canso de verte así, feliz, auténtica, siendo tú. Tu sonrisa tiene algo mágico que me pone nervioso y tranquilo al mismo tiempo. Solo tú puedes hacer eso.</div>
@@ -530,7 +826,38 @@ body {
   </div>
 </section>
 
-<!-- ======== SECCIÓN 4: PARA SIEMPRE ======== -->
+<!-- ======================================
+     SECCIÓN CUMPLEAÑOS
+======================================= -->
+<section id="cumple">
+  <div class="globos" id="globosBg"></div>
+
+  <div class="cumple-card">
+    <div class="cumple-badge">🎂 12 de Junio · Día Especial 🎂</div>
+    <h2>¡Feliz Cumpleaños,<br>mi amor!</h2>
+    <div class="cumple-fecha-grande">12.06</div>
+
+    <div class="cumple-emojis">🎉🎈💕🎊✨🎂💖</div>
+
+    <p>Hoy el mundo cumple <strong>un año de tenerte</strong>… y yo un año de ser la persona más afortunada por estar cerca de ti.</p>
+
+    <div class="cumple-deseo">
+      <p>"Que este año que empieza para ti esté lleno de todo lo que te mereces: risas, abrazos, momentos que te hagan sentir especial… porque tú LO ERES."</p>
+    </div>
+
+    <p>No sé cómo explicarte lo que siento cada vez que te veo. Pero sí sé que hoy, tu cumpleaños, quiero que sepas que <strong>eres la persona más bonita</strong> que ha llegado a mi vida.</p>
+
+    <p>Gracias por existir. Gracias por sonreír así. Gracias por ser tan tú. No te pido nada más que seguir siendo exactamente quien eres, porque esa persona ya me tiene completamente enamorado.</p>
+
+    <p style="margin-top:10px">Te deseo un día tan especial como tú, lleno de amor, sorpresas y muchísima felicidad. <strong>¡Feliz cumple, amorcito!</strong> 🎂❤️</p>
+
+    <div class="cumple-emojis" style="margin-top:24px">🥳💝🎁💫🎈</div>
+  </div>
+</section>
+
+<!-- ======================================
+     SECCIÓN 4: PARA SIEMPRE
+======================================= -->
 <section id="siempre">
   <div class="carta">
     <h2>Para ti, siempre 💌</h2>
@@ -543,22 +870,123 @@ body {
   </div>
 </section>
 
+</div><!-- fin contenido-bloqueado -->
+
+<!-- Overlay de confeti -->
+<div id="celebracion-overlay"></div>
+
 <script>
-// Corazones flotando en el fondo de la portada
+
+/* ---- Corazones portada ---- */
 const contenedor = document.getElementById('corazonesBg');
 const emojis = ['❤️','💕','💗','💓','💖','🌸','✨'];
-
 for (let i = 0; i < 18; i++) {
-  const span = document.createElement('span');
-  span.classList.add('corazon-bg');
-  span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-  span.style.left = Math.random() * 100 + 'vw';
-  span.style.animationDuration = (6 + Math.random() * 8) + 's';
-  span.style.animationDelay = (Math.random() * 8) + 's';
-  span.style.fontSize = (1 + Math.random() * 2) + 'rem';
-  contenedor.appendChild(span);
+  const s = document.createElement('span');
+  s.classList.add('corazon-bg');
+  s.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+  s.style.left = Math.random() * 100 + 'vw';
+  s.style.animationDuration = (6 + Math.random() * 8) + 's';
+  s.style.animationDelay = (Math.random() * 8) + 's';
+  s.style.fontSize = (1 + Math.random() * 2) + 'rem';
+  contenedor.appendChild(s);
 }
-</script>
 
+/* ---- Estrellas sección password ---- */
+const estBg = document.getElementById('estrellasBg');
+for (let i = 0; i < 60; i++) {
+  const e = document.createElement('div');
+  e.classList.add('estrella');
+  const sz = Math.random() * 3 + 1;
+  e.style.width = sz + 'px';
+  e.style.height = sz + 'px';
+  e.style.top  = Math.random() * 100 + '%';
+  e.style.left = Math.random() * 100 + '%';
+  e.style.animationDuration = (2 + Math.random() * 4) + 's';
+  e.style.animationDelay    = (Math.random() * 4) + 's';
+  estBg.appendChild(e);
+}
+
+/* ---- Globos cumpleaños ---- */
+const globosBg = document.getElementById('globosBg');
+const globoEmojis = ['🎈','🎉','💖','🎊','🌸','✨','🎂','💕'];
+for (let i = 0; i < 14; i++) {
+  const g = document.createElement('span');
+  g.classList.add('globo');
+  g.textContent = globoEmojis[Math.floor(Math.random() * globoEmojis.length)];
+  g.style.left = Math.random() * 100 + 'vw';
+  g.style.animationDuration = (8 + Math.random() * 10) + 's';
+  g.style.animationDelay    = (Math.random() * 10) + 's';
+  g.style.fontSize = (1.5 + Math.random() * 2) + 'rem';
+  globosBg.appendChild(g);
+}
+
+/* ---- Ir a sección password ---- */
+function irAPassword() {
+  document.getElementById('password-section').scrollIntoView({ behavior: 'smooth' });
+}
+
+/* ---- Verificar contraseña ---- */
+function verificarPassword() {
+  const dd   = document.getElementById('inp-dd').value.trim().padStart(2,'0');
+  const mm   = document.getElementById('inp-mm').value.trim().padStart(2,'0');
+  const yyyy = document.getElementById('inp-yyyy').value.trim();
+  const ingresada = dd + '/' + mm + '/' + yyyy;
+  const correcta  = '08/11/2025';
+  const errEl = document.getElementById('error-msg');
+
+  if (ingresada === correcta) {
+    errEl.textContent = '';
+    lanzarConfeti();
+    // Revelar el contenido bloqueado
+    document.getElementById('contenido-bloqueado').style.display = 'block';
+    setTimeout(() => {
+      document.getElementById('historia').scrollIntoView({ behavior: 'smooth' });
+    }, 1200);
+  } else {
+    errEl.textContent = '💔 Esa no es la fecha… piénsalo bien, amorcito 😘';
+    errEl.style.animation = 'none';
+    void errEl.offsetWidth;
+    errEl.style.animation = 'sacudir 0.4s ease';
+  }
+}
+
+/* ---- Confeti de celebración ---- */
+function lanzarConfeti() {
+  const overlay = document.getElementById('celebracion-overlay');
+  overlay.style.display = 'block';
+  overlay.innerHTML = '';
+  const colores = ['#ff4d6d','#ff8fa3','#ffb3c1','#ffd6de','#fff','#f7c59f','#ffec99'];
+  for (let i = 0; i < 80; i++) {
+    const c = document.createElement('div');
+    c.classList.add('confeti');
+    c.style.left = Math.random() * 100 + 'vw';
+    c.style.top  = '-20px';
+    c.style.background = colores[Math.floor(Math.random() * colores.length)];
+    c.style.width  = (6 + Math.random() * 10) + 'px';
+    c.style.height = (8 + Math.random() * 14) + 'px';
+    c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    c.style.animationDuration = (1.5 + Math.random() * 2) + 's';
+    c.style.animationDelay    = (Math.random() * 0.8) + 's';
+    overlay.appendChild(c);
+  }
+  setTimeout(() => { overlay.style.display = 'none'; }, 4000);
+}
+
+/* ---- Auto avanzar inputs de fecha ---- */
+document.getElementById('inp-dd').addEventListener('input', function() {
+  if (this.value.length >= 2) document.getElementById('inp-mm').focus();
+});
+document.getElementById('inp-mm').addEventListener('input', function() {
+  if (this.value.length >= 2) document.getElementById('inp-yyyy').focus();
+});
+
+/* ---- Enter en cualquier input dispara verificación ---- */
+['inp-dd','inp-mm','inp-yyyy'].forEach(id => {
+  document.getElementById(id).addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') verificarPassword();
+  });
+});
+
+</script>
 </body>
 </html>
